@@ -1,11 +1,12 @@
 [project]
 name = "isaac-lab-uv-template"
 version = "0.1.0"
-description = "Add your description here"
+description = "A self-contained template for Isaac Lab projects using the uv package manager, optimized for Isaac Sim 5.1 and pre-configured for Reinforcement Learning (RSL-RL)."
 readme = "README.md"
 requires-python = "==3.11.*"
 dependencies = [
-    "isaacsim[all,extscache]==5.1.0",
+    "isaaclab[isaacsim,all]==2.3.0",
+    "rl-games",
     "torch==2.7.0",
     "torchvision==0.22.0",
 ]
@@ -20,13 +21,14 @@ url = "https://download.pytorch.org/whl/cu128"
 explicit = true
 
 [tool.uv.sources]
-isaacsim = { index = "nvidia" }
+isaaclab = { index = "nvidia" }
 torch = [
   { index = "pytorch-cu128", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
 ]
 torchvision = [
   { index = "pytorch-cu128", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
 ]
+rl-games = { git = "https://github.com/isaac-sim/rl_games.git", rev = "python3.11" }
 
 [tool.uv]
 conflicts = []
